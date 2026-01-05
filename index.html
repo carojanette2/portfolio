@@ -3,74 +3,492 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Caroline Contreras - Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
+      }
+
+      .hero .tagline {
+        font-size: 1.5rem;
+        opacity: 0.95;
+        font-weight: 300;
+        margin-bottom: 2rem;
+      }
+
+      .hero .links {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .hero .links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero .links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
+        transform: translateY(-2px);
+      }
+
+      .content {
+        padding: 3rem 2rem;
+      }
+
+      .section {
+        margin-bottom: 3rem;
+      }
+
+      .section h2 {
+        font-size: 1.75rem;
+        color: #667eea;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #667eea;
+        display: inline-block;
+      }
+
+      .about p {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: #4a5568;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill-card {
+        background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+      }
+
+      .skill-card h3 {
+        font-size: 1.125rem;
+        color: #2d3748;
+        margin-bottom: 0.75rem;
+      }
+
+      .skill-card p {
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .project-card {
+        background: #f7fafc;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+      }
+
+      .project-card h3 {
+        font-size: 1.375rem;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-card .tech-tags {
+        color: #667eea;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .project-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .project-card li {
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        position: relative;
+        color: #4a5568;
+      }
+
+      .project-card li:before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .experience-card {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+        border-left: 3px solid #e2e8f0;
+        transition: border-color 0.3s ease;
+      }
+
+      .experience-card:hover {
+        border-left-color: #667eea;
+      }
+
+      .experience-card h3 {
+        font-size: 1.25rem;
+        color: #2d3748;
+        margin-bottom: 0.25rem;
+      }
+
+      .experience-card .company {
+        color: #667eea;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .experience-card .date {
+        color: #718096;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .experience-card ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .experience-card li {
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+        color: #4a5568;
+      }
+
+      .experience-card li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .education-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+      }
+
+      .education-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .education-card .school {
+        opacity: 0.95;
+        margin-bottom: 0.25rem;
+      }
+
+      .education-card .date {
+        opacity: 0.85;
+        font-size: 0.875rem;
+      }
+
+      .contact {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: -3rem -2rem 0;
+      }
+
+      .contact h2 {
+        color: white;
+        border: none;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact p {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.95;
+      }
+
+      .contact a {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2.5rem;
+        border: 2px solid white;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .contact a:hover {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero .tagline {
+          font-size: 1.25rem;
+        }
+
+        .content {
+          padding: 2rem 1.5rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    <section class="sub-section">
-      <div class="card">
-        <div class="work-exp">
-          <h2>Portfolio</h2>
-          <p>
-            Welcome to my portfolio! Here you'll find a selection of my projects
-            and experiences that showcase my skills and expertise in various
-            areas. Feel free to explore and learn more about my work.
-          </p>
+    <div class="container">
+      <div class="hero">
+        <h1>Caroline Contreras</h1>
+        <div class="tagline">Software Developer & Problem Solver</div>
+        <div class="links">
+          <a href="tel:6613747825">📞 (661) 374-7825</a>
+          <a href="mailto:carojanette2@gmail.com">✉️ Email Me</a>
+          <a href="https://github.com/carojanette2" target="_blank"
+            >💻 GitHub</a
+          >
         </div>
       </div>
-      <div class="card">
-        <div class="skills">
-          <h2>Skills</h2>
+
+      <div class="content">
+        <section class="section about">
+          <h2>About Me</h2>
           <p>
-            I possess a diverse set of skills including proficiency in
-            programming languages such as JavaScript, Python, and Java.
-            Additionally, I have experience with frameworks like React, Angular,
-            and Django, as well as knowledge of database management and cloud
-            computing.
+            Recent Computer Science graduate with strong foundations in software
+            development, databases, and systems programming. Hands-on experience
+            delivering production-facing applications through academic projects
+            and supporting enterprise workflows in a university procurement
+            environment. Proven ability to work in team-based development,
+            contribute to backend systems, and improve operational efficiency
+            through technology.
           </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="edu">
+        </section>
+
+        <section class="section skills">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Programming Languages</h3>
+              <p>SQL, C, C++, Python, PHP, HTML, JavaScript</p>
+            </div>
+            <div class="skill-card">
+              <h3>Developer Tools</h3>
+              <p>
+                Android Studio, React, GitHub, Git, Visual Studio Code, Linux
+              </p>
+            </div>
+            <div class="skill-card">
+              <h3>Languages</h3>
+              <p>English (fluent), Spanish (fluent)</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section education">
           <h2>Education</h2>
-          <p>
-            I hold a degree in Computer Science from XYZ University, where I
-            graduated with honors. My education has provided me with a strong
-            foundation in programming, algorithms, and software development.
-          </p>
-        </div>
+          <div class="education-card">
+            <h3>Bachelor of Science, Computer Science</h3>
+            <div class="school">California State University, Bakersfield</div>
+            <div class="date">January 2024 – December 2025</div>
+          </div>
+          <div class="education-card">
+            <h3>Associate of Science, Computer Science</h3>
+            <div class="school">Bakersfield College</div>
+            <div class="date">June 2021 – December 2023</div>
+          </div>
+        </section>
+
+        <section class="section projects">
+          <h2>Featured Projects</h2>
+          <div class="project-card">
+            <h3>Inventory Tracking System</h3>
+            <div class="tech-tags">
+              HTML • PHP • SQL • React Native • GitHub
+            </div>
+            <ul>
+              <li>
+                Designed and developed an inventory management application used
+                by the CSUB Distribution Department to track assets, manage
+                audits, and improve accountability
+              </li>
+              <li>
+                Focused primarily on mobile application development using React
+                Native, contributing to user interface design and application
+                logic
+              </li>
+              <li>
+                Collaborated with team members using GitHub for version control,
+                code reviews, and issue tracking
+              </li>
+              <li>
+                Supported integration between frontend components and backend
+                database systems to ensure data accuracy and reliability
+              </li>
+            </ul>
+          </div>
+          <div class="project-card">
+            <h3>Bank Account Management System</h3>
+            <div class="tech-tags">PHP • HTML • SQL • GitHub</div>
+            <ul>
+              <li>
+                Built a simulated banking system supporting account creation,
+                deletion, deposits, withdrawals, and transaction tracking
+              </li>
+              <li>
+                Implemented backend logic for handling checking and savings
+                accounts with transactional integrity
+              </li>
+              <li>
+                Designed and queried relational databases to support account
+                management and transaction history
+              </li>
+              <li>
+                Collaborated with teammates to divide responsibilities across
+                frontend functionality and backend systems
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section experience">
+          <h2>Experience</h2>
+          <div class="experience-card">
+            <h3>Student Assistant for the Procurement Department</h3>
+            <div class="company">California State University, Bakersfield</div>
+            <div class="date">February 2024 – Present</div>
+            <ul>
+              <li>
+                Led a project to digitize and redesign procurement and
+                asset-management workflows, reducing manual errors and improving
+                process efficiency using Kuali
+              </li>
+              <li>
+                Managed and updated departmental web pages through OmniCMS to
+                ensure accuracy and accessibility
+              </li>
+              <li>
+                Processed incoming requisitions and indexed contracts, purchase
+                orders, and official documentation using the OnBase enterprise
+                content management system
+              </li>
+              <li>
+                Assisted in compiling documentation for departmental audits and
+                Public Records Act requests, ensuring compliance and accuracy
+              </li>
+            </ul>
+          </div>
+          <div class="experience-card">
+            <h3>
+              Student Assistant – Renegade HUB/Academic Technology Assistant
+            </h3>
+            <div class="company">Bakersfield College</div>
+            <div class="date">January 2022 – December 2023</div>
+            <ul>
+              <li>
+                Provided technical support to students for Canvas navigation,
+                assignment submission, and academic technology troubleshooting
+              </li>
+              <li>
+                Developed tutorials, guides, and documentation to improve
+                student self-service and reduce support overhead
+              </li>
+              <li>
+                Created and managed social media content to communicate updates,
+                resources, and announcements
+              </li>
+              <li>
+                Transcribed and captioned instructional videos to improve
+                accessibility and ADA compliance
+              </li>
+            </ul>
+          </div>
+          <div class="experience-card">
+            <h3>CV PATH Summer Researcher</h3>
+            <div class="company">University of California, Merced</div>
+            <div class="date">June 2023 – July 2023</div>
+          </div>
+        </section>
       </div>
-      <div class="card">
-        <div class="projects">
-          <h2>Projects</h2>
-          <p>
-            Throughout my career, I have worked on various projects ranging from
-            web development to mobile applications. Some of my notable projects
-            include a task management app, an e-commerce website, and a social
-            networking platform.
-          </p>
-        </div>
+
+      <div class="contact">
+        <h2>Let's Work Together</h2>
+        <p>I'm always open to discussing new projects and opportunities</p>
+        <a href="mailto:carojanette2@gmail.com">Get In Touch</a>
       </div>
-      <div class="card">
-        <div class="contact">
-          <h2>Contact Me</h2>
-          <p>
-            If you'd like to get in touch, please feel free to reach out via
-            email at
-          </p>
-          <a href="mailto:carojanette2@gmail.com">carojanette2@gmail.com</a>
-        </div>
-      </div>
-    </section>
-    <aside>
-      <div class="nav">
-        <h2>Navigation</h2>
-        <ul>
-          <li><a href="#work-exp">Work Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#edu">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-        </ul>
-      </div>
-    </aside>
+    </div>
   </body>
 </html>
